@@ -1,0 +1,65 @@
+CREATE DATABASE  IF NOT EXISTS `homework3` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `homework3`;
+-- MySQL dump 10.13  Distrib 8.0.43, for Win64 (x86_64)
+--
+-- Host: localhost    Database: homework3
+-- ------------------------------------------------------
+-- Server version	8.0.43
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `record`
+--
+
+DROP TABLE IF EXISTS `record`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `record` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userid` int DEFAULT NULL,
+  `gameid` int DEFAULT NULL,
+  `levelid` int DEFAULT NULL,
+  `star` int DEFAULT NULL,
+  `startTime` datetime DEFAULT NULL,
+  `endTime` datetime DEFAULT NULL,
+  `duration` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `record_user` (`userid`),
+  KEY `record_game` (`gameid`),
+  KEY `record_level` (`levelid`),
+  CONSTRAINT `record_game` FOREIGN KEY (`gameid`) REFERENCES `gamecategory` (`id`),
+  CONSTRAINT `record_level` FOREIGN KEY (`levelid`) REFERENCES `gamelevel` (`id`),
+  CONSTRAINT `record_user` FOREIGN KEY (`userid`) REFERENCES `player` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `record`
+--
+
+LOCK TABLES `record` WRITE;
+/*!40000 ALTER TABLE `record` DISABLE KEYS */;
+INSERT INTO `record` VALUES (1,2,1,2,11,'2025-09-19 02:05:00','2025-09-19 02:11:00',360),(2,2,1,1,2,'2025-03-02 08:15:07','2025-03-02 08:20:22',315),(7,1,1,1,3,'2025-03-23 11:23:07','2025-03-23 11:30:10',423),(8,1,1,1,2,'2025-10-20 23:07:34','2025-10-20 23:07:47',13),(9,1,1,1,0,'2025-10-20 23:45:12','2025-10-20 23:45:38',25),(10,4,1,1,2,'2025-10-21 00:09:22','2025-10-21 00:09:35',13),(11,4,2,1,3,'2025-10-21 01:40:13','2025-10-21 01:40:29',15),(12,4,2,1,3,'2025-10-21 05:59:42','2025-10-21 06:00:31',49),(13,5,2,1,3,'2025-10-21 06:17:31','2025-10-21 06:17:45',13),(14,5,2,1,2,'2025-10-21 06:17:31','2025-10-21 06:18:00',28);
+/*!40000 ALTER TABLE `record` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2025-10-21  6:36:13
